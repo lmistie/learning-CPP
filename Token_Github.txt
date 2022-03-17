@@ -1,4 +1,4 @@
-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
-
+Token github
+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
 
 vscode vscode://vscode.github-authentication/did-authenticate?windowid=1&code=fac400a2286d62875dc5&state=cc12ba03-f84b-4b70-9780-1049bd835f9f
