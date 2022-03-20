@@ -1,33 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   discharge_difficult.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmistie <romaniy11052001@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/20 15:04:19 by lmistie           #+#    #+#             */
+/*   Updated: 2022/03/20 16:39:01 by lmistie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <cmath>
+#include <cctype>
+
 using namespace std;
- 
+
 int main()
 {
-    setlocale(LC_ALL,"RUS");
-    cout << "\tДеление числа на разряды\n";
-    int number;
-    start:
-    cout << "\nВведите пятизначное число: ";
-    cin >> number;
-    if ((number>9999) && (number<=99999))
-    for (int i = 0; i < 5; i++) // Цикл, который выделяет разряды числа
-        cout << i+1 << "-я цифра = " << (number/static_cast<int>(pow ( 10 , ( 4 - i ))))%10 << endl;
+	setlocale(LC_ALL,"RUS");
+    int ctr = 0; // счетчик символов в строке
+    char str[10]; // символьная строка
+	start:
+	cout<<"Введите пожалуйста число: "<<endl;
+	cin>>str;
+    while (str[ctr])  // пока не конец строки
+    {
+    	if (isalpha(str[ctr])) // если текущий символ строки буква
+	  			break;
+      	ctr++; // инкремент счётчика
+    } // конец while
+	int a = atoi(str);
+    if (a == 0 && a<=9999 || a>=100000)
+    {
+        cout<<"Вы ввели неверное число либо не число вовсе. Число должно быть пятизначным.\n\n";
+    }
     else
     {
-        cout << "\nВы ввели неверное число!\n";
-        goto start;
+        if (a>=100000)
+        {
+            cout<<"Вы ввели неверное число либо не число вовсе. Число должно быть пятизначным.\n\n";
+        }
+        else
+        {
+            cout<<endl;
+            cout<<"1 цифра равна "<<(a/10000)<<"\n";
+            cout<<"2 цифра равна "<<(a/1000)%10<<"\n";  
+            cout<<"3 цифра равна "<<(a/100)%10<<"\n";
+            cout<<"4 цифра равна "<<(a/10)%10<<"\n";
+            cout<<"5 цифра равна "<<a%10<<"\n";
+            cout<<endl;
+        }
     }
-    int menu_num;
+	int menu_number;
     menu:
     cout << "\n1 - Продолжить работу\n2 - Выход\n\nСделайте выбор (1 или 2): ";
-    cin >> menu_num;
-    switch (menu_num)
+    cin >> menu_number;
+    switch (menu_number)
         {
-            case 1: {goto start; break;}
+            case 1: {goto start;}
             case 2: {return 0; break;}
             default: {cout << "\nБудьте внимательнее!\n"; goto menu;}
         }
     return 0;
-    // system("pause");
 }
