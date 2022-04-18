@@ -1,9 +1,9 @@
-<h1 align="center"><font size="6px"> C_Programm здесь я учу СИ</font></h1>
+<h1 align="center"><font size="6px"> C++ здесь я учу С++</font></h1>
 <!--Заголовок-->
 
 <h2 align="center">
 
-![C_prog](https://img.shields.io/badge/-C-000000?style=for-the-badge&logo=C)
+![CPP](https://img.shields.io/badge/-C++-000000?style=for-the-badge&logo=C%2b%2b)
 
 </h2>
 
