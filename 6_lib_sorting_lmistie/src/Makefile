@@ -23,7 +23,7 @@ OBJ = $(patsubst %.cpp,%.o,$(SRC))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+@$(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
