@@ -1,6 +1,6 @@
 NAME = libsorting.a
-PATH_SRC = ../src/
-PATH_OBJ = ../src/
+PATH_SRC = ./
+PATH_OBJ = ./
 
 CC = g++
 CFLAGS = -Wall -Wextra -Werror
@@ -23,9 +23,9 @@ OBJ = $(patsubst %.cpp,%.o,$(SRC))
 
 all: $(NAME)
 
-@$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
 	@/bin/rm -f $(OBJ)

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../6_lib_sorting_lmistie/src/libsorting.h"
+#include "../6_lib_sorting_lmistie/libsorting.h"
 
 int main() {
     int arr[10] = {1, 5, 2, 4, 3, 6, 9, 8, 7, 0};

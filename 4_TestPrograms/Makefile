@@ -3,7 +3,7 @@ CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra
 
 # Директории и файлы
-LIBSORTING_DIR := ../6_lib_sorting_lmistie/src
+LIBSORTING_DIR := ../6_lib_sorting_lmistie/
 INCLUDE_DIR := $(LIBSORTING_DIR)
 LIB_DIR := $(LIBSORTING_DIR)
 LIBSORTING := $(LIB_DIR)/libsorting.a
