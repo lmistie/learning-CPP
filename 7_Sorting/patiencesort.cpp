@@ -16,19 +16,16 @@
 // терпеливая сортировка
 void patiencesort(int *arr, int size)
 {
-    std::vector<std::stack<int> > piles;
+    std::vector<std::stack<int>> piles;
     for (int i = 0; i < size; ++i)
     {
         int j = 0;
-        while (j < piles.size() && arr[i] > piles[j].top()) // .size() - количество элементов в векторе .top() - возвращает значение верхнего элемента стека
+        while (j < piles.size() && !piles[j].empty() && arr[i] > piles[j].top()) // Добавлена проверка на пустоту стека
             ++j;
-
         if (j == piles.size())
-            piles.push_back(std::stack<int>()); // .push_back() - добавляет элемент в конец вектора
-
-        piles[j].push(arr[i]); // .push() - добавляет элемент в стек
+            piles.push_back(std::stack<int>());
+        piles[j].push(arr[i]);
     }
-
     int index = 0;
     for (int i = 0; i < piles.size(); ++i)
     {
@@ -51,7 +48,14 @@ int main()
     int size;
     std::cout << "Введите размер массива: ";
     std::cin >> size;
-    int *arr = new int[size]; // new - выделяет память для массива
+
+    if (size <= 0)
+    {
+        std::cout << "Размер массива должен быть положительным числом." << std::endl;
+        return 1;
+    }
+
+    int *arr = new int[size];
     std::cout << "Введите элементы массива: \n";
     for (int i = 0; i < size; i++)
     {
@@ -69,7 +73,6 @@ int main()
         std::cout << arr[i] << " ";
     }
     std::cout << "\n";
-    delete[] arr;
-
+    delete[] arr; // Освобождение выделенной памяти
     return 0;
 }
