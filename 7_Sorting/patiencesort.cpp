@@ -14,25 +14,25 @@
 // Стабильность: нет
 
 // терпеливая сортировка
-void patiencesort(int *arr, int size)
+void patiencesort(std::vector<int>& arr)
 {
     std::vector<std::stack<int>> piles;
-    for (int i = 0; i < size; ++i)
+    for (int num : arr)
     {
         int j = 0;
-        while (j < piles.size() && !piles[j].empty() && arr[i] > piles[j].top()) // Добавлена проверка на пустоту стека
+        while (j < piles.size() && !piles[j].empty() && num > piles[j].top())
             ++j;
         if (j == piles.size())
-            piles.push_back(std::stack<int>());
-        piles[j].push(arr[i]);
+            piles.emplace_back();
+        piles[j].push(num);
     }
     int index = 0;
-    for (int i = 0; i < piles.size(); ++i)
+    for (auto& pile : piles)
     {
-        while (!piles[i].empty())
+        while (!pile.empty())
         {
-            arr[index] = piles[i].top();
-            piles[i].pop();
+            arr[index] = pile.top();
+            pile.pop();
             ++index;
         }
     }
@@ -55,24 +55,27 @@ int main()
         return 1;
     }
 
-    int *arr = new int[size];
+    std::vector<int> arr(size);
     std::cout << "Введите элементы массива: \n";
     for (int i = 0; i < size; i++)
     {
         std::cin >> arr[i];
     }
+
     std::cout << "Начальный массив: ";
-    for (int i = 0; i < size; i++)
+    for (int num : arr)
     {
-        std::cout << arr[i] << " ";
+        std::cout << num << " ";
     }
-    patiencesort(arr, size);
+
+    patiencesort(arr);
+
     std::cout << "\nОтсортированный массив: ";
-    for (int i = 0; i < size; i++)
+    for (int num : arr)
     {
-        std::cout << arr[i] << " ";
+        std::cout << num << " ";
     }
     std::cout << "\n";
-    delete[] arr; // Освобождение выделенной памяти
+
     return 0;
 }
